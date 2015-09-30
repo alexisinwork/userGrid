@@ -1,0 +1,43 @@
+.container-fluid {
+    padding: 50px;
+}
+
+.table {
+    width: 60%;
+    float: left;
+}
+
+.forma {
+    width: 35%;
+    float: right;
+    background-color: rgb(249,249,249);
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.forma > .form-group > label {
+    width: 40%;
+    float:left;
+    line-height: 34px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.forma > .form-group > .form-control {
+    width: 60%;
+    float: left;
+    margin-top: 20px;
+}
+
+.forma > .submit {
+    margin-top: 25px;
+}
+
+.invalid {
+    background-color: #E4C8C8
+}
+
+.valid {
+    background-color: #C8E4C8;
+}

@@ -1,0 +1,45 @@
+<div ng-controller="UserCtrl as user">
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-striped table-bordered table-hover cols-sm-8">
+                <tr>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                </tr>
+                <tr class="userField" ng-repeat="user in users | orderBy: $index ">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.secondName }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td>{{ user.age }}</td>
+                </tr>
+            </table>
+            <div class="col-sm-4 forma">
+                <div class="form-group">
+                    <label>First name:</label>
+                    <input type="text" class="form-control" id="firstName" ng-model="firstName" check="name" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label>Secon name:</label>
+                    <input type="text" class="form-control" id="secondName" ng-model="secondName" check="email" placeholder="User@mail.to">
+                </div>
+                <div class="form-group">
+                    <label>Phone number:</label>
+                    <input type="text" class="form-control" id="phone" ng-model="phone" check="phone" placeholder="(xxx) xxx-xx-xx">
+                </div>
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <input type="text" class="form-control" id="gender" ng-model="gender" check="gender" placeholder="Male (Female)">
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="text" class="form-control" id="age" ng-model="age" check="age" placeholder="50">
+                </div>
+                <button class="btn btn-default submit" addUser>Add User</button>
+            </div>
+        </div>
+    </div>
+</div>
