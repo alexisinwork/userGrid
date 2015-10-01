@@ -3,6 +3,8 @@ angular.module('userGrid').directive('check', function() {
         restrict: 'A',
         link: function (scope, element, attrs) {
 
+            var user = scope.user.user;
+
             function validate(elem, pattern) {
 
                 var res = elem.search(pattern);
@@ -10,29 +12,41 @@ angular.module('userGrid').directive('check', function() {
                 if (res == -1) {
                     $(element).removeClass('valid');
                     $(element).addClass('invalid');
+                    return false;
                 } else {
                     $(element).removeClass('invalid');
                     $(element).addClass('valid');
+                    return true;
                 }
             }
 
             function checkName(name) {
                 var pattern = /\S/;
-                validate(name, pattern);
+                var answer = validate(name, pattern);
+                if (answer){
+                    user.firstName = name;
+                }
             }
 
-            function checkEmail(email) {
-                var pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
-                validate(email, pattern);
+            function checkSurname(name){
+                var pattern = /\S/;
+                var answer = validate(name, pattern);
+                if (answer){
+                    user.secondName = name;
+                }
             }
 
             function checkPhone(phone) {
                 var pattern = /\(\d{3}\) \d{3}-\d{2}-\d{2}/;
-                validate(phone, pattern);
+                var answer = validate(phone, pattern);
+                if (answer){
+                    user.phone = phone;
+                }
             }
 
             function checkGender(gender) {
                 if ( gender === "male" || gender === "female" ){
+                    user.gender = gender;
                     $(element).removeClass('invalid');
                     $(element).addClass('valid');
                 } else {
@@ -43,6 +57,7 @@ angular.module('userGrid').directive('check', function() {
 
             function checkAge(age) {
                 if ( age > 18 && age < 100 ){
+                    user.age = age;
                     $(element).removeClass('invalid');
                     $(element).addClass('valid');
                 } else {
@@ -58,11 +73,11 @@ angular.module('userGrid').directive('check', function() {
                     checkName(name);
                 });
 
-            } else if ( attrs.check === "email" ){
+            } else if ( attrs.check === "surname" ){
 
                 element.on('blur', function(){
-                    var email = $(element).val();
-                    checkEmail(email);
+                    var surname = $(element).val();
+                    checkSurname(surname);
                 });
 
             } else if ( attrs.check === "phone" ){
@@ -90,12 +105,29 @@ angular.module('userGrid').directive('check', function() {
 
         }
     }
-}).directive('addUser', function() {
+});
+
+angular.module('userGrid').directive('checkUser', function() {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
 
-            console.log(1);
+            var inputs = $('input');
+
+            element.bind('click', function(){
+                var valid = $('.valid').length;
+
+                if ( valid === inputs.length ){
+
+                    for (var i=0; i<inputs.length; i++){
+                        $(inputs[i]).val('').addClass('default');
+                    }
+                    scope.user.checkAdd();
+
+                } else {
+                    alert('Some fields invalid');
+                }
+            });
 
         }
     }

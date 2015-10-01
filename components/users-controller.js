@@ -4,9 +4,11 @@ app.controller('UserCtrl', ['$scope','$location','users', function($scope, $loca
 
     var self = this;
     $scope.users = users.getUsers();
+    self.user = {};
 
     self.checkAdd = function(){
-        console.log('Ahahahahhaha');
+        users.addUser( self.user );
+        console.log($scope.users);
     };
 
 }]);

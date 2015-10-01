@@ -133,7 +133,8 @@ angular.module('userGrid').factory('users', function(){
     };
 
     return {
-        getUsers: self.getUsers
+        getUsers: self.getUsers,
+        addUser: self.addUser
     }
 
 });
