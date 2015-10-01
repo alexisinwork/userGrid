@@ -1,6 +1,6 @@
 var app = angular.module('userGrid');
 
-app.controller('UserCtrl', ['$scope','$location','users', function($scope, $location, users) {
+app.controller('UserCtrl', ['$scope','$location','users', function($scope, $location, users, $digest) {
 
     var self = this;
     $scope.users = users.getUsers();
@@ -8,7 +8,7 @@ app.controller('UserCtrl', ['$scope','$location','users', function($scope, $loca
 
     self.checkAdd = function(){
         users.addUser( self.user );
-        console.log($scope.users);
+        //$scope.$digest();
     };
 
 }]);

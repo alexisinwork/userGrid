@@ -1,4 +1,4 @@
-angular.module('userGrid').factory('users', function(){
+angular.module('userGrid').factory('users', function($rootScope){
 
     var self = this;
 
@@ -129,7 +129,9 @@ angular.module('userGrid').factory('users', function(){
     };
 
     self.addUser = function(user){
-        users.push(user);
+        $rootScope.$apply(function () {
+            users.push(user);
+        });
     };
 
     return {
