@@ -8,7 +8,14 @@ app.controller('UserCtrl', ['$scope','$location','users', function($scope, $loca
 
     self.checkAdd = function(){
         users.addUser( self.user );
-        //$scope.$digest();
+    };
+
+    self.delete = function(name){
+        users.delete(name);
+    };
+
+    $scope.sorting = function(orderBy){
+        users.sorting(orderBy);
     };
 
 }]);

@@ -134,9 +134,56 @@ angular.module('userGrid').factory('users', function($rootScope){
         });
     };
 
+    function sortByKey(array, key) {
+        return array.sort(function(a, b) {
+            var x = a[key];
+            var y = b[key];
+
+            if (typeof x == "string")
+            {
+                x = x.toLowerCase();
+                y = y.toLowerCase();
+            }
+
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        });
+    }
+
+    Array.prototype.remove = function(from, to) {
+        var rest = this.slice((to || from) + 1 || this.length);
+        this.length = from < 0 ? this.length + from : from;
+        return this.push.apply(this, rest);
+    };
+
+    self.sorting = function(orderBy){
+        if ( orderBy === 'firstName' ){
+            sortByKey(users, 'firstName');
+        } else if ( orderBy === 'secondName' ){
+            sortByKey(users, 'secondName');
+        } else if ( orderBy === 'phone' ){
+            sortByKey(users, 'phone');
+        } else if ( orderBy === 'gender' ){
+            sortByKey(users, 'gender');
+        } else if ( orderBy === 'age' ){
+            sortByKey(users, 'age');
+        }
+    };
+
+    self.delete = function(name){
+        for ( var i=0; i < users.length; i++ ){
+            if ( users[i]['firstName'] === name ){
+                $rootScope.$apply(function () {
+                    users.remove(i);
+                });
+            }
+        }
+    };
+
     return {
         getUsers: self.getUsers,
-        addUser: self.addUser
+        addUser: self.addUser,
+        sorting: self.sorting,
+        delete: self.delete
     }
 
 });

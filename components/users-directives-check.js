@@ -132,3 +132,15 @@ angular.module('userGrid').directive('checkUser', function() {
         }
     }
 });
+
+angular.module('userGrid').directive('deleteUser', function() {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('click', function(){
+                var name = $(element).next().val();
+                scope.user.delete(name);
+            });
+        }
+    }
+});
