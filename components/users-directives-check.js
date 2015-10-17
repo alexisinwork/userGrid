@@ -10,12 +10,10 @@ angular.module('userGrid').directive('check', function() {
                 var res = elem.search(pattern);
 
                 if (res == -1) {
-                    $(element).removeClass('valid');
-                    $(element).addClass('invalid');
+                    $(element).removeClass('valid').addClass('invalid');
                     return false;
                 } else {
-                    $(element).removeClass('invalid');
-                    $(element).addClass('valid');
+                    $(element).removeClass('invalid').addClass('valid');
                     return true;
                 }
             }
@@ -116,12 +114,12 @@ angular.module('userGrid').directive('checkUser', function() {
 
             element.bind('click', function(){
                 var valid = $('.valid').length;
-
-                if ( valid === inputs.length ){
+                if ( valid === inputs.length-1 ){
 
                     for (var i=0; i<inputs.length; i++){
                         $(inputs[i]).val('').addClass('default');
                     }
+
                     scope.user.checkAdd();
 
                 } else {

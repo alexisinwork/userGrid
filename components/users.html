@@ -9,12 +9,12 @@
                     <th>Gender <span class="glyphicon glyphicon-chevron-up pull-right" ng-click="sorting('gender')"></span></th>
                     <th>Age <span class="glyphicon glyphicon-chevron-up pull-right" ng-click="sorting('age')"></span></th>
                 </tr>
-                <tr class="userField" ng-repeat="user in users | orderBy: $index ">
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.secondName }}</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.gender }}</td>
-                    <td>{{ user.age }}</td>
+                <tr class="userField" ng-repeat="user11 in users track by $index | orderBy: $index">
+                    <td>{{ user11.firstName }}</td>
+                    <td>{{ user11.secondName }}</td>
+                    <td>{{ user11.phone }}</td>
+                    <td>{{ user11.gender }}</td>
+                    <td>{{ user11.age }}</td>
                 </tr>
             </table>
             <div class="col-sm-4 forma">
