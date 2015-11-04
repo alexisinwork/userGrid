@@ -6,9 +6,8 @@ app.controller('UserCtrl', ['$scope','$location','users', function($scope, $loca
     $scope.users = users.getUsers();
     self.user = {};
 
-    self.checkAdd = function(){
+    $scope.checkAdd = function(){
         users.addUser( new User($scope.firstName, $scope.secondName, $scope.phone, $scope.gender, $scope.age) );
-        //users.addUser( angular.copy(self.user) );
     };
 
     self.delete = function(name){

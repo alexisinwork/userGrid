@@ -99,6 +99,7 @@ angular.module('userGrid').directive('check', function() {
                     checkAge(age);
                 });
 
+                
             }
 
         }
@@ -120,7 +121,7 @@ angular.module('userGrid').directive('checkUser', function() {
                         $(inputs[i]).val('').addClass('default');
                     }
 
-                    scope.user.checkAdd();
+                    scope.checkAdd();
 
                 } else {
                     alert('Some fields invalid');
