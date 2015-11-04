@@ -98,8 +98,6 @@ angular.module('userGrid').directive('check', function() {
                     var age = $(element).val();
                     checkAge(age);
                 });
-
-                
             }
 
         }
